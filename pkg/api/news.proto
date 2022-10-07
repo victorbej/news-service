@@ -4,6 +4,8 @@ import "google/api/annotations.proto";
 
 package content_v1;
 
+option go_package = "./";
+
 // Базовые методы проверки жизни сервиса
 service ContentCheckService{
   // Проверка жизнеспособности сервиса
