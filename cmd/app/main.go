@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"github.com/victorbej/news-service/internal/adapters/handlers"
+)
 
 func main() {
-	fmt.Println("news-service")
+	handlers.HandleServices()
 }
