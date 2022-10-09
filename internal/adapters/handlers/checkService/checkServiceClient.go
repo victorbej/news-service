@@ -13,7 +13,7 @@ import (
 func HandleServiceClient(wg *sync.WaitGroup) {
 	defer wg.Done()
 
-	conn, err := grpc.Dial(":8080", grpc.WithTransportCredentials(insecure.NewCredentials()))
+	conn, err := grpc.Dial(":8000", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatal(err)
 	}
