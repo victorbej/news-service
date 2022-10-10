@@ -1,4 +1,4 @@
-package checkService
+package checkHealthService
 
 import (
 	"context"
