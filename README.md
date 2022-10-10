@@ -5,3 +5,7 @@
 4. Server port: 8000
 5. Client port: 8080
 6. Second way to gen protoc is to use buf
+7. Get query: http://localhost:8081/eapi/news/manage/health -> result is {
+   "serviceName": "CheckHealthServer",
+   "serviceStatus": "200"
+   }
