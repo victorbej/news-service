@@ -1,10 +1,10 @@
 syntax = "proto3";
 
+package api;
+
+option go_package = "github.com/victorbej/news-service/pkg/api;api";
+
 import "google/api/annotations.proto";
-
-package content_v1;
-
-option go_package = "./";
 
 // Базовые методы проверки жизни сервиса
 service ContentCheckService{

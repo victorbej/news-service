@@ -4,3 +4,4 @@
    " from root project directory
 4. Server port: 8000
 5. Client port: 8080
+6. Second way to gen protoc is to use buf

@@ -4,7 +4,7 @@
 // - protoc             v3.12.4
 // source: pkg/api/news.proto
 
-package __
+package api
 
 import (
 	context "context"
@@ -36,7 +36,7 @@ func NewContentCheckServiceClient(cc grpc.ClientConnInterface) ContentCheckServi
 
 func (c *contentCheckServiceClient) CheckHealth(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*HealthResponse, error) {
 	out := new(HealthResponse)
-	err := c.cc.Invoke(ctx, "/content_v1.ContentCheckService/CheckHealth", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/api.ContentCheckService/CheckHealth", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -82,7 +82,7 @@ func _ContentCheckService_CheckHealth_Handler(srv interface{}, ctx context.Conte
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/content_v1.ContentCheckService/CheckHealth",
+		FullMethod: "/api.ContentCheckService/CheckHealth",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ContentCheckServiceServer).CheckHealth(ctx, req.(*EmptyRequest))
@@ -94,7 +94,7 @@ func _ContentCheckService_CheckHealth_Handler(srv interface{}, ctx context.Conte
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ContentCheckService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "content_v1.ContentCheckService",
+	ServiceName: "api.ContentCheckService",
 	HandlerType: (*ContentCheckServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -136,7 +136,7 @@ func NewNewsServiceClient(cc grpc.ClientConnInterface) NewsServiceClient {
 
 func (c *newsServiceClient) GetNews(ctx context.Context, in *NewsRequestParams, opts ...grpc.CallOption) (*NewsList, error) {
 	out := new(NewsList)
-	err := c.cc.Invoke(ctx, "/content_v1.NewsService/GetNews", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/api.NewsService/GetNews", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -145,7 +145,7 @@ func (c *newsServiceClient) GetNews(ctx context.Context, in *NewsRequestParams, 
 
 func (c *newsServiceClient) GetOne(ctx context.Context, in *ObjectId, opts ...grpc.CallOption) (*NewsObject, error) {
 	out := new(NewsObject)
-	err := c.cc.Invoke(ctx, "/content_v1.NewsService/GetOne", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/api.NewsService/GetOne", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -154,7 +154,7 @@ func (c *newsServiceClient) GetOne(ctx context.Context, in *ObjectId, opts ...gr
 
 func (c *newsServiceClient) GetOneBySlug(ctx context.Context, in *ObjectSlug, opts ...grpc.CallOption) (*NewsObject, error) {
 	out := new(NewsObject)
-	err := c.cc.Invoke(ctx, "/content_v1.NewsService/GetOneBySlug", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/api.NewsService/GetOneBySlug", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -163,7 +163,7 @@ func (c *newsServiceClient) GetOneBySlug(ctx context.Context, in *ObjectSlug, op
 
 func (c *newsServiceClient) Create(ctx context.Context, in *RequestNewsObject, opts ...grpc.CallOption) (*BaseResponse, error) {
 	out := new(BaseResponse)
-	err := c.cc.Invoke(ctx, "/content_v1.NewsService/Create", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/api.NewsService/Create", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -172,7 +172,7 @@ func (c *newsServiceClient) Create(ctx context.Context, in *RequestNewsObject, o
 
 func (c *newsServiceClient) Update(ctx context.Context, in *RequestNewsObject, opts ...grpc.CallOption) (*BaseResponse, error) {
 	out := new(BaseResponse)
-	err := c.cc.Invoke(ctx, "/content_v1.NewsService/Update", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/api.NewsService/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -181,7 +181,7 @@ func (c *newsServiceClient) Update(ctx context.Context, in *RequestNewsObject, o
 
 func (c *newsServiceClient) Delete(ctx context.Context, in *ObjectId, opts ...grpc.CallOption) (*BaseResponse, error) {
 	out := new(BaseResponse)
-	err := c.cc.Invoke(ctx, "/content_v1.NewsService/Delete", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/api.NewsService/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -190,7 +190,7 @@ func (c *newsServiceClient) Delete(ctx context.Context, in *ObjectId, opts ...gr
 
 func (c *newsServiceClient) GetFileLink(ctx context.Context, in *FileId, opts ...grpc.CallOption) (*FileLink, error) {
 	out := new(FileLink)
-	err := c.cc.Invoke(ctx, "/content_v1.NewsService/GetFileLink", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/api.NewsService/GetFileLink", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -266,7 +266,7 @@ func _NewsService_GetNews_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/content_v1.NewsService/GetNews",
+		FullMethod: "/api.NewsService/GetNews",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(NewsServiceServer).GetNews(ctx, req.(*NewsRequestParams))
@@ -284,7 +284,7 @@ func _NewsService_GetOne_Handler(srv interface{}, ctx context.Context, dec func(
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/content_v1.NewsService/GetOne",
+		FullMethod: "/api.NewsService/GetOne",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(NewsServiceServer).GetOne(ctx, req.(*ObjectId))
@@ -302,7 +302,7 @@ func _NewsService_GetOneBySlug_Handler(srv interface{}, ctx context.Context, dec
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/content_v1.NewsService/GetOneBySlug",
+		FullMethod: "/api.NewsService/GetOneBySlug",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(NewsServiceServer).GetOneBySlug(ctx, req.(*ObjectSlug))
@@ -320,7 +320,7 @@ func _NewsService_Create_Handler(srv interface{}, ctx context.Context, dec func(
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/content_v1.NewsService/Create",
+		FullMethod: "/api.NewsService/Create",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(NewsServiceServer).Create(ctx, req.(*RequestNewsObject))
@@ -338,7 +338,7 @@ func _NewsService_Update_Handler(srv interface{}, ctx context.Context, dec func(
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/content_v1.NewsService/Update",
+		FullMethod: "/api.NewsService/Update",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(NewsServiceServer).Update(ctx, req.(*RequestNewsObject))
@@ -356,7 +356,7 @@ func _NewsService_Delete_Handler(srv interface{}, ctx context.Context, dec func(
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/content_v1.NewsService/Delete",
+		FullMethod: "/api.NewsService/Delete",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(NewsServiceServer).Delete(ctx, req.(*ObjectId))
@@ -374,7 +374,7 @@ func _NewsService_GetFileLink_Handler(srv interface{}, ctx context.Context, dec 
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/content_v1.NewsService/GetFileLink",
+		FullMethod: "/api.NewsService/GetFileLink",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(NewsServiceServer).GetFileLink(ctx, req.(*FileId))
@@ -386,7 +386,7 @@ func _NewsService_GetFileLink_Handler(srv interface{}, ctx context.Context, dec 
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var NewsService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "content_v1.NewsService",
+	ServiceName: "api.NewsService",
 	HandlerType: (*NewsServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -440,7 +440,7 @@ func NewTagServiceClient(cc grpc.ClientConnInterface) TagServiceClient {
 
 func (c *tagServiceClient) Get(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*TagList, error) {
 	out := new(TagList)
-	err := c.cc.Invoke(ctx, "/content_v1.TagService/Get", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/api.TagService/Get", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -486,7 +486,7 @@ func _TagService_Get_Handler(srv interface{}, ctx context.Context, dec func(inte
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/content_v1.TagService/Get",
+		FullMethod: "/api.TagService/Get",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TagServiceServer).Get(ctx, req.(*EmptyRequest))
@@ -498,7 +498,7 @@ func _TagService_Get_Handler(srv interface{}, ctx context.Context, dec func(inte
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var TagService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "content_v1.TagService",
+	ServiceName: "api.TagService",
 	HandlerType: (*TagServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
