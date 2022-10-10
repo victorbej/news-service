@@ -5,10 +5,10 @@ import (
 	api "github.com/victorbej/news-service/pkg/api"
 )
 
-type ServiceServer struct {
+type ContentCheckService struct {
 	api.UnimplementedContentCheckServiceServer
 }
 
-func (s *ServiceServer) CheckHealth(ctx context.Context, req *api.EmptyRequest) (res *api.HealthResponse, err error) {
+func (s *ContentCheckService) CheckHealth(ctx context.Context, req *api.EmptyRequest) (res *api.HealthResponse, err error) {
 	return &api.HealthResponse{ServiceName: "CheckHealthServer", ServiceStatus: "200"}, nil
 }

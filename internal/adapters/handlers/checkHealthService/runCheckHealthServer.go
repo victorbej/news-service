@@ -17,11 +17,11 @@ const (
 	grpcHostPort = "0.0.0.0:9090"
 )
 
-func RunCheckHealthService(wg *sync.WaitGroup) {
+func RunCheckHealthServer(wg *sync.WaitGroup) {
 	defer wg.Done()
 
 	grpcServer := grpc.NewServer()
-	server := &ServiceServer{}
+	server := &ContentCheckService{}
 	listen, err := net.Listen("tcp", grpcHostPort)
 	if err != nil {
 		log.Fatal(err)

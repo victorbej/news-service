@@ -9,7 +9,7 @@ func HandleServices() {
 	wg := &sync.WaitGroup{}
 	wg.Add(1)
 
-	go checkHealthService.RunCheckHealthService(wg)
+	go checkHealthService.RunCheckHealthServer(wg)
 
 	wg.Wait()
 }
