@@ -13,16 +13,12 @@ import (
 	"sync"
 )
 
-const (
-	grpcHostPort = "0.0.0.0:9090"
-)
-
 func RunCheckHealthServer(wg *sync.WaitGroup) {
 	defer wg.Done()
 
 	grpcServer := grpc.NewServer()
 	server := &ContentCheckService{}
-	listen, err := net.Listen("tcp", grpcHostPort)
+	listen, err := net.Listen(cfg.TCP, cfg.GRPC)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -32,7 +28,7 @@ func RunCheckHealthServer(wg *sync.WaitGroup) {
 	mux := runtime.NewServeMux()
 	opts := []grpc.DialOption{grpc.WithTransportCredentials(insecure.NewCredentials())}
 
-	err = api.RegisterContentCheckServiceHandlerFromEndpoint(context.Background(), mux, grpcHostPort, opts)
+	err = api.RegisterContentCheckServiceHandlerFromEndpoint(context.Background(), mux, cfg.GRPC, opts)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -42,7 +38,7 @@ func RunCheckHealthServer(wg *sync.WaitGroup) {
 		return grpcServer.Serve(listen)
 	})
 	g.Go(func() (err error) {
-		return http.ListenAndServe(":8081", mux)
+		return http.ListenAndServe(cfg.Port, mux)
 	})
 
 	err = g.Wait()
